@@ -1,0 +1,13 @@
+{% extends "laba1/index.html" %}
+
+{% block title %}Достижение{% endblock %}
+
+{% block content %}
+    <div class="achievement_block">
+        <h2>{{ achievement.title }}</h2>
+        <p><strong>Дата:</strong> {{ achievement.date }}</p>
+        <p><strong>Описание:</strong> {{ achievement.description}}</p>
+        <p align="right"><a href="/laba1">Вернуться назад</a></p>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends "laba1/index.html" %}
+
+
+{% block title %}Достижения{% endblock %}
+
+{% block content %}
+        <h1>Мои достижения</h1>
+        {% if achievements %}
+            {% for achievement in achievements %}
+                <li class="achievement_block">
+                    <h2>{{ achievement.title }}</h2>
+                    <p><strong>Дата:</strong> {{ achievement.date }}</p>
+                    <p><strong>Описание:</strong> <i>{{ achievement.description|truncatechars:"10" }}</i></p>
+                    <p align="right"><a href="achievement/{{ achievement.id }}">Перейти к достижению</a></p>
+
+                    {% comment %}
+                    <strong>{{ achievement.date }}</strong>
+                    {{ achievement.title }} <i>{{ achievement.description|truncatechars:"10" }}</i>
+                    <a href="achievement/{{ achievement.id }}">Перейти к достижению</a>
+                    {% endcomment %}
+
+                </li>
+            {% endfor %}
+        {% else %}
+            <li class="achievement_block">
+                <h2 align="center">Нет достижений!</h2>
+            </li>
+        {% endif %}
+{% endblock %}
+

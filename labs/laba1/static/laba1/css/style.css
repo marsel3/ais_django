@@ -1,0 +1,23 @@
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+.achievement_block {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+h1 {
+    text-align: center;
+}
+
+a {
+    text-decoration: none
+}
