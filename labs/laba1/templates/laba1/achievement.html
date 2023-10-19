@@ -3,11 +3,67 @@
 {% block title %}Достижение{% endblock %}
 
 {% block content %}
-    <div class="achievement_block">
-        <h2>{{ achievement.title }}</h2>
-        <p><strong>Дата:</strong> {{ achievement.date }}</p>
-        <p><strong>Описание:</strong> {{ achievement.description}}</p>
-        <p align="right"><a href="/laba1">Вернуться назад</a></p>
+
+<div class="achievement_block">
+    <h2>{{ achievement.title }}</h2>
+    <p><strong>Дата:</strong> {{ achievement.date }}</p>
+    <p><strong>Описание:</strong> {{ achievement.description }}</p>
+
+    <div class="like-buttons">
+        {% if user.is_authenticated %}
+            <form method="post" action="{% url 'like_achievement' achievement.id %}">
+                {% csrf_token %}
+                {% if liked_by_user %}
+                    <button type="submit" name="unlike">Убрать лайк</button>
+                {% else %}
+                    <button type="submit" name="like">Нравится</button>
+                {% endif %}
+            </form>
+            <form method="post" action="{% url 'like_achievement' achievement.id %}">
+                {% csrf_token %}
+                {% if disliked_by_user %}
+                    <button type="submit" name="undislike">Убрать дизлайк</button>
+                {% else %}
+                    <button type="submit" name="dislike">Не нравится</button>
+                {% endif %}
+            </form>
+
+        {% endif %}
+    </div>
+
+    <div class="like-count">
+        <p><strong>Лайки:</strong> {{ likes }}</p>
+        <p><strong>Дизлайки:</strong> {{ dislikes }}</p>
+    </div>
+
+    <p align="right"><a href="/">Вернуться назад</a></p>
+</div>
+
+
+
+    <div class="comment_block">
+        <h3>Комментарии</h3>
+
+        {% if user.is_authenticated %}
+            <div class="comment-form">
+                <h4>Оставить комментарий</h4>
+                <form method="post" action="{% url 'add_comment' achievement.id %}">
+                    {% csrf_token %}
+                    <textarea name="text" rows="4" cols="50" placeholder="Напишите ваш комментарий"></textarea><br>
+                    <button type="submit">Оставить комментарий</button>
+                </form>
+            </div>
+        {% else %}
+            <p>Чтобы оставить комментарий, <a href="{% url 'login' %}">войдите</a>.</p>
+        {% endif %}
+
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <p><strong>{{ comment.user.username }}</strong> написал(а) {{ comment.timestamp }}</p>
+                    <p>{{ comment.text }}</p>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 {% endblock %}
-

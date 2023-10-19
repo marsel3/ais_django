@@ -1,13 +1,15 @@
-
 {% extends "laba1/index.html" %}
 
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}
-  <h2>Регистрация</h2>
+<div class="achievement_block login-container">
+  <h3>Регистрация</h3>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Отправить</button>
+    <button type="submit" class="btn-primary">Отправить</button>
   </form>
+    <p><a href="{% url 'login' %}" class="text-link">Уже есть акккаунт. Войти</a></p>
+</div>
 {% endblock %}

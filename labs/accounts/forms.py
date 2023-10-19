@@ -3,12 +3,26 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class CustomUserCreationForm(forms.ModelForm):
+class CustomUserCreationForm(UserCreationForm):
+    username = forms.CharField(
+        label='Имя пользователя',
+        widget=forms.TextInput(attrs={'placeholder': 'Имя пользователя'}),
+        max_length=150,
+        required=True
+    )
+    password1 = forms.CharField(
+        label='Пароль',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Пароль'}),
+        strip=False,
+        required=True
+    )
+    password2 = forms.CharField(
+        label='Подтвердите пароль',
+        widget=forms.PasswordInput(attrs={'placeholder': 'Подтвердите пароль'}),
+        strip=False,
+        required=True
+    )
+
     class Meta:
         model = User
-        fields = ('username',)
-
-    def __init__(self, *args, **kwargs):
-        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-        self.fields['password1'].widget = forms.HiddenInput()
-        self.fields['password2'].widget = forms.HiddenInput()
+        fields = ('username', 'password1', 'password2')

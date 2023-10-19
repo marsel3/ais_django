@@ -4,8 +4,12 @@
 {% block title %}Достижения{% endblock %}
 
 {% block content %}
-        <h1>Мои достижения</h1>
-        <p align="center"><a href="?sort_by=date">Сортировать по дате</a> | <a href="?sort_by=title">Сортировать по названию</a></p>
+        <h1 align="center">Мои достижения</h1>
+        <p align="center">
+            <a href="?sort_by=date&sort_order={{ sort }}">Сортировать по Дате</a> |
+            <a href="?sort_by=title&sort_order={{ sort }}">Сортировать по Названию</a> |
+            <a href="?sort_by=likes&sort_order={{ sort }}">Сортировать по Избранному (больше всего лайков)</a>
+        </p>
 
         {% if achievements %}
             {% for achievement in achievements %}
