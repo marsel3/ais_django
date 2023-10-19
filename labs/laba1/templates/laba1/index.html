@@ -1,13 +1,28 @@
 {% load static %}
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %}</title>
+    <title>{% block title %}Заголовок{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'laba1/css/style.css' %}">
 </head>
 <body>
+    <header>
+        <ul class="header-links">
+            <li><a href="{% url 'achievement_list' %}">Достижения</a></li>
+            <li><a href="{% url 'add_edit_delete_achievement' %}">Редактор достижений</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'achievement_list' %}">Выход</a></li>
+            {% else %}
+                <li><a href="{% url 'achievement_list' %}">Вход</a></li>
+                <li><a href="{% url 'achievement_list' %}">Регистрация</a></li>
+            {% endif %}
+        </ul>
+    </header>
 
     {% block content %}
     {% endblock %}
 </body>
 </html>
+
+

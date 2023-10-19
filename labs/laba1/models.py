@@ -5,8 +5,6 @@ class Achievement(models.Model):
     title = models.CharField(verbose_name='Название', max_length=50)
     date = models.DateTimeField(verbose_name='Дата и время', auto_now=True)
     description = models.TextField(verbose_name='Описание')
-    is_favorite = models.BooleanField(default=False, verbose_name='Избранное')
-
 
     def __str__(self):
         return self.title

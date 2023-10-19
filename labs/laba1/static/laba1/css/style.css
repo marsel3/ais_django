@@ -19,5 +19,39 @@ h1 {
 }
 
 a {
-    text-decoration: none
+    text-decoration: none;
 }
+
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.header-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.header-links li {
+    margin: 0 10px;
+}
+
+.header-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.header-links a:hover {
+    background-color: #ccc;
+}
+

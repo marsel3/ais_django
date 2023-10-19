@@ -1,0 +1,40 @@
+{% extends "laba1/index.html" %}
+
+{% block content %}
+
+<div class="add-edit-delete-section">
+    <h1>Выберите достижение для редактирования или удаления:</h1>
+    <form method="get">
+        <select name="achievement_id">
+            <option value="" selected>Выберите достижение</option>
+            {% for ach in achievements %}
+                <option value="{{ ach.id }}">{{ ach.title }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Выбрать</button>
+    </form>
+
+    {% if achievement %}
+        <div class="selected-achievement">
+            <h2>Выбранное достижение: {{ achievement.title }}</h2>
+            <p><strong>Дата:</strong> {{ achievement.date }}</p>
+            <p><strong>Описание:</strong> {{ achievement.description }}</p>
+        </div>
+    {% endif %}
+</div>
+
+<hr>
+
+<div class="add-edit-delete-section">
+    <h1>Добавить/Редактировать/Удалить Достижение</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="save">Сохранить</button>
+        {% if achievement %}
+            <button type="submit" name="delete">Удалить</button>
+        {% endif %}
+    </form>
+</div>
+<hr>
+{% endblock %}

@@ -3,10 +3,9 @@ from .models import Achievement
 
 
 class AchievementAdmin(admin.ModelAdmin):
-    list_display = ('title', 'date', 'description', 'is_favorite')
+    list_display = ('title', 'date', 'description')
     list_display_links = ('title', 'date', 'description')
-    search_fields = ('title', 'date', 'description', 'is_favorite')
-
+    search_fields = ('title', 'date', 'description')
 
 
 admin.site.register(Achievement, AchievementAdmin)
