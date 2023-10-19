@@ -1,0 +1,14 @@
+ 
+{% extends "laba1/index.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+  <h3>Вход</h3>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+  </form>
+  <p><a href="{% url 'logout' %}">Выход</a></p>
+{% endblock %}

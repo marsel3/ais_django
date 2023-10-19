@@ -12,10 +12,10 @@
             <li><a href="{% url 'add_edit_delete_achievement' %}">Редактор достижений</a></li>
 
             {% if user.is_authenticated %}
-                <li><a href="{% url 'achievement_list' %}">Выход</a></li>
+                <li><a href="{% url 'logout' %}">Выход</a></li>
             {% else %}
-                <li><a href="{% url 'achievement_list' %}">Вход</a></li>
-                <li><a href="{% url 'achievement_list' %}">Регистрация</a></li>
+                <li><a href="{% url 'login' %}">Вход</a></li>
+                <li><a href="{% url 'register' %}">Регистрация</a></li>
             {% endif %}
         </ul>
     </header>
